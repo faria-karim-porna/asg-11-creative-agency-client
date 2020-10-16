@@ -1,25 +1,66 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { createContext, useState } from 'react';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import NotFound from './Components/NotFound/NotFound';
+import Review from './Components/Review/Review';
+import ServiceList from './Components/ServiceList/ServiceList';
+import Home from './Components/Home/Home';
+import AddService from './Components/AddService/AddService';
+import MakeAdmin from './Components/MakeAdmin/MakeAdmin';
+import Login from './Components/Login/Login';
+import MainDashboard from './Components/MainDashboard/MainDashboard';
+import Order from './Components/Order/Order';
+import AdminDataList from './Components/AdminDataList/AdminDataList';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
-function App() {
+export const UserContext = createContext();
+function App(props) {
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
+    <Router>
+        <Switch>
+          <Route path="/home">
+            <Home></Home>
+          </Route>
+          <Route path="/login">
+            <Login></Login>
+          </Route>
+          <PrivateRoute path="/dashboard/:serviceTitle">
+            <MainDashboard></MainDashboard>
+          </PrivateRoute>
+          <Route path="/customer/order">
+            <Order></Order>
+          </Route>
+          <Route path="/customer/serviceList">
+            <ServiceList></ServiceList>
+          </Route>
+          <Route path="/customer/review">
+            <Review></Review>
+          </Route>
+          <Route path="/admin/serviceList">
+            <AdminDataList></AdminDataList>
+          </Route>
+          <Route path="/admin/addService">
+            <AddService></AddService>
+          </Route>
+          <Route path="/admin/makeAdmin">
+            <MakeAdmin></MakeAdmin>
+          </Route>
+          <Route exact path="/">
+            <Home></Home>
+          </Route>
+          <Route path="*">
+            <NotFound></NotFound>
+          </Route>
+        </Switch>
+    </Router>
+    </UserContext.Provider>
   );
 }
 

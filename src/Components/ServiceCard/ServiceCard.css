@@ -1,0 +1,15 @@
+.service-card{
+    padding: 5px;
+    background-color: white;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    padding: 30px;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    border-radius: 20px;
+}
+.title{
+    font-size: 20px;
+    font-weight: bold;
+}
+

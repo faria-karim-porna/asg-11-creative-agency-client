@@ -1,0 +1,64 @@
+
+  .sidenav {
+    height: 100%;
+    width: 18%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    background-color: white;
+  }
+  
+  .sidenav a {
+    
+    text-decoration: none;
+    font-size: 15px;
+    display: block;
+    color: black;
+    padding-top: 10px;
+    padding-left: 10px;
+  }
+  .sidenav a:hover {
+    text-decoration: none;
+  }
+  
+  .sideNav-logo{
+      height: 50px;
+  }
+  .sideNav-icons{
+    height: 20px;
+    padding-right: 10px;
+}
+
+  /* @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+  @media (max-width: 876px) {  
+    .sidenav {
+      width: 140px;
+    }
+    .sideNav-logo{
+      height: 30px;
+  }
+  } */
+  @media (max-width: 767.98px) { 
+    .sidenav {
+      
+      width: 140px;
+      
+    }
+    .sidenav a {
+      font-size: 12px;
+     
+    }
+
+   }
+   @media (max-width: 1100px) { 
+    .sideNav-logo{
+      height: 30px;
+  }
+    
+   }

@@ -1,0 +1,57 @@
+body{
+    background-color: #f4f7fc !important;
+}
+.pageName{
+    margin-left: 240px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    font-size: 25px;
+    font-weight: bold;
+  }
+.mainArea{
+    margin-left: 260px; 
+    padding-right: 70px;
+    padding-left: 20px;
+    padding-top: 30px;
+  }
+.upload-button-class > button{
+    background-color: #DEFFED;
+    border: 1px solid #009444 ;
+    color: #009444;
+    padding: 3px 0px;
+    border-radius: 5px;
+}
+.upload-button-class button >img{
+    height: 30px;
+}
+input{
+    border: none;
+    height: 50px;
+    margin-bottom: 10px !important;
+    border-radius: 4px;
+}
+::placeholder{
+    padding: 10px;
+}
+.textArea{
+    height: 100px;
+    width: 100%;
+    border: none;
+    resize: none;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+.form-class{
+    margin-top: 5vh;
+    margin-left: 2vh !important;
+}
+.dark-button-class{
+    padding: 5px;
+    background-color: #111430;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 15px;
+}

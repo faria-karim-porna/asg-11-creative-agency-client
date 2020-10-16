@@ -1,0 +1,70 @@
+body{
+    background-color: #f4f7fc !important;
+}
+.pageName{
+    margin-left: 5% !important;
+    padding-left: 15% !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    font-size: 25px;
+    font-weight: bold;
+  }
+.mainArea{
+    margin-left: 19% !important; 
+    padding-right:20% !important;
+    padding-left: 5% !important;
+    padding-top: 30px;
+  }
+  .makeAdim-form-design{
+    margin-top: 20px;
+    padding-top: 20px;
+    width: 95%;
+    border-radius: 10px;
+    padding-bottom: 180px;
+    padding-right: 10% !important;
+    padding-left:10% !important;
+    background-color: white;
+}
+.input-makeAdmin{
+  border: 1px solid #C9C9C9;
+  width: 100%;
+}
+.form-label{
+  color: #232323;
+  font-weight: bold;
+}
+.email-submit-btn{
+    margin-left: -2% !important;
+}
+.email-submit-btn >button{
+     margin-left: -2% !important;
+     padding-bottom: 10px;
+     padding-top: 10px;
+     width: 50%;
+}
+.username{
+  margin-left: 50% !important;
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+@media (max-width: 767.98px) { 
+ .pageName{
+  margin-left: 18% !important;
+ }
+ .username{
+  margin-left: 20% !important;
+}
+
+}
+@media (max-width: 1100px) { 
+ .mainArea{
+   margin-left: 25% !important;
+   padding-right:10% !important;
+  }
+  .input-makeAdmin{
+    width: 100%;
+  }
+ }
+

@@ -1,0 +1,22 @@
+.banner-title{
+    font-weight: 700;
+    font-size: 48px;
+    margin-bottom: 5%;
+}
+.banner-subtitle{
+    font-size: 16px;
+    font-weight: 400;
+}
+@media (max-width: 767.98px) {
+    .banner-text{
+        margin-left: 5% !important;
+        margin-top: 5%;
+    }
+    .footer-bg{
+        height:700px;
+    }
+    .banner-image{
+        margin-left: 5% !important;
+        margin-top: 5%;
+    }
+ }

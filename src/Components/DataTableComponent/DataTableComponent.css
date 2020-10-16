@@ -1,0 +1,21 @@
+.table-component{
+  
+    width: 95% !important;
+}
+tr{
+  
+    text-align: center !important;
+}
+th{
+    background-color: #F5F6FA;
+    color: #686868 !important;
+    
+}
+.first-component{
+    border-top-left-radius: 15px !important;
+    border-bottom-left-radius: 15px !important;
+}
+.last-component{
+    border-top-right-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
+}

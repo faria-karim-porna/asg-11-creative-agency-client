@@ -1,0 +1,77 @@
+body{
+    background-color: #f4f7fc !important;
+}
+.pageName{
+    margin-left: 240px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    font-size: 25px;
+    font-weight: bold;
+  }
+.mainArea{
+    margin-left: 19% !important;  
+    padding-right: 70px;
+    padding-left: 20px;
+    padding-top: 30px;
+  }
+  .form-design{
+    margin-top: 20px;
+    padding-top: 20px;
+    width: 95%;
+    border-radius: 10px;
+    padding-bottom: 20px;
+    padding-right: 10% !important;
+    padding-left:10% !important;
+    background-color: white;
+}
+.upload-button-class > label{
+  background-color: #DEFFED;
+  border: 1px solid #009444 ;
+  color: #009444;
+  padding: 3px 0px;
+  border-radius: 5px;
+  width: 60%;
+}
+.upload-button-class> label >img{
+  height: 30px;
+}
+.textArea-add-services{
+  height: 100px;
+  width: 100%;
+  border: 1px solid #C9C9C9;
+  resize: none;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  
+}
+.input-add-services{
+  border: 1px solid #C9C9C9;
+  width: 100%;
+}
+.form-label{
+  color: #232323;
+  font-weight: bold;
+}
+.username{
+  margin-left: 700px;
+  padding-left: 30px;
+  font-size: 15px;
+  font-weight: lighter;
+}
+.submit-btn{
+  margin-left: 24% !important;
+  padding-left: 20px;
+  width: 53%;
+  padding-top: 2%;
+}
+@media (max-width: 1100px) { 
+  .submit-btn{
+    margin-left: 30% !important;
+    padding-left: 20px;
+    width: 58%;
+    padding-top: 2%;
+  }
+ 
+ }

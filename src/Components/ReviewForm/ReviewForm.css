@@ -1,0 +1,29 @@
+input{
+    border: none;
+    height: 50px;
+    margin-bottom: 10px !important;
+    border-radius: 4px;
+}
+::placeholder{
+    padding: 10px;
+}
+.textArea{
+    height: 100px;
+    width: 100%;
+    border: none;
+    resize: none;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+.form-class{
+    margin-top: 5vh;
+    margin-left: 2vh !important;
+}
+.dark-button-class{
+    padding: 5px;
+    background-color: #111430;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 15px;
+}

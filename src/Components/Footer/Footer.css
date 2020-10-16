@@ -1,0 +1,32 @@
+.footer-bg{
+    height:500px;
+    position:relative;
+    background-color: #FBD062 !important;
+    background-size: cover;
+    width: 100%;
+    overflow: hidden;
+}
+.message{
+    height: 100px;
+    border: none;
+    resize: none;
+    
+}
+.copyright-text{
+    text-align: center;
+    width: 100%;
+}
+
+@media (max-width: 767.98px) {
+    .footer-text{
+        margin-left: 5% !important;
+        margin-top: 5%;
+    }
+    .footer-bg{
+        height:700px;
+    }
+    .footer-form{
+        margin-left: 5% !important;
+        margin-top: 5%;
+    }
+ }
