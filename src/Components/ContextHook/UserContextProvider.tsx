@@ -1,11 +1,11 @@
-import { createContext } from "react";
-import { LoginInterface } from "../Login/Login";
+// import { createContext } from "react";
+// import { LoginInterface } from "../Login/Login";
 
-type TypeLoginContext = [LoginInterface, React.Dispatch<React.SetStateAction<LoginInterface>>];
-export const UserContext = createContext<TypeLoginContext>([
-  { isSignedIn: false, name: "", email: "", password: "", photo: "" } as LoginInterface,
-  () => null,
-]);
+// type TypeLoginContext = [LoginInterface, React.Dispatch<React.SetStateAction<LoginInterface>>];
+// export const UserContext = createContext<TypeLoginContext>([
+//   { isSignedIn: false, name: "", email: "", password: "", photo: "" } as LoginInterface,
+//   () => null,
+// ]);
 
 // // context/todoContext.tsx
 // import * as React from "react";
@@ -49,3 +49,14 @@ export const UserContext = createContext<TypeLoginContext>([
 // };
 
 // export default UserProvider;
+
+// import React, { useState } from "react";
+import React, { useState, createContext } from "react";
+interface LoginProviderProps {
+  children: React.ReactNode;
+}
+export const LoginContext = createContext({ loggedIn: false, setLoggedIn: (loggedIn: boolean) => {} });
+export const LoginProvider = ({ children }: LoginProviderProps) => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  return <LoginContext.Provider value={{ loggedIn, setLoggedIn }}>{children}</LoginContext.Provider>;
+};

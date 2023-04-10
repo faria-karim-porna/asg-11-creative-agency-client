@@ -12,7 +12,7 @@ import MainDashboard from "./Components/MainDashboard/MainDashboard";
 import Order from "./Components/Order/Order";
 import AdminDataList from "./Components/AdminDataList/AdminDataList";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import { UserContext } from "./Components/ContextHook/UserContextProvider";
+import { LoginProvider } from "./Components/ContextHook/UserContextProvider";
 
 export function App(props: any): JSX.Element {
   const [loggedInUser, setLoggedInUser] = useState({
@@ -23,7 +23,7 @@ export function App(props: any): JSX.Element {
     photo: "",
   });
   return (
-    // <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+    <LoginProvider>
       <Router>
         <Switch>
           <Route path="/home">
@@ -61,7 +61,7 @@ export function App(props: any): JSX.Element {
           </Route>
         </Switch>
       </Router>
-    // </UserContext.Provider>
+    </LoginProvider>
   );
 }
 
