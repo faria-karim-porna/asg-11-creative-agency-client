@@ -6,8 +6,7 @@ const Navigation = () => {
   const email = localStorage.getItem("email");
   const signOut = () => {
     localStorage.clear();
-    // history.push("/home");
-    window.location.reload(false);
+    window.location.reload();
   };
   return (
     <nav className="navbar navbar-expand-lg navbar-light">

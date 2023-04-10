@@ -1,8 +1,8 @@
 import { faBorderNone } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
-const Status = ({ user }) => {
+const Status = ({ user }: any) => {
   let status = user.status;
-  const handlechange = (e) => {
+  const handlechange = (e: any) => {
     status = e.target.value;
     const id = user._id;
     const serviceStatus = { id, status };

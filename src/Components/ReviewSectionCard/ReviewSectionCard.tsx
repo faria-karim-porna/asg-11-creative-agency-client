@@ -1,6 +1,6 @@
 import React from "react";
 import "./ReviewSectionCard.css";
-const ReviewSectionCard = ({ review }) => {
+const ReviewSectionCard = ({ review }: any) => {
   return (
     <div className="col-md-3 pl-5 pr-5 pt-5 pb-5 review-card mr-2">
       <div className="row">

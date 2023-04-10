@@ -5,7 +5,7 @@ const ReviewForm = () => {
   const [designation, setDesignation] = useState("");
   const [description, setDescription] = useState("");
   const img = localStorage.getItem("photo");
-  const handleBlur = (e) => {
+  const handleBlur = (e: any) => {
     if (e.target.name == "name") {
       setName(e.target.value);
     }
@@ -17,7 +17,7 @@ const ReviewForm = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     const newReview = {
       name: name,
       image: img,

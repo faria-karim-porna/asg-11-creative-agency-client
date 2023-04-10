@@ -3,42 +3,42 @@ import { useParams } from "react-router-dom";
 import cloud from "../../images/icons/cloud-upload-outline 1.png";
 import "./OrderForm.css";
 const OrderForm = () => {
-  let { serviceTitle } = useParams();
-  localStorage.setItem("link", serviceTitle);
-  if (!serviceTitle) {
-    let serviceTitle = localStorage.getItem("link");
-  }
+  // let { serviceTitle } = useParams();
+  // localStorage.setItem("link", serviceTitle);
+  // if (!serviceTitle) {
+  //   let serviceTitle = localStorage.getItem("link");
+  // }
   const email = localStorage.getItem("email");
   const [order, setOrder] = useState({});
   const [file, setFile] = useState(null);
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-    fetch("https://asg-11-creative-agency-server-production.up.railway.app/oneService?serviceTitle=" + serviceTitle)
-      .then((res) => res.json())
-      .then((data) => {
-        setDescription(data.service[0].serviceDescription);
-      });
+    // fetch("https://asg-11-creative-agency-server-production.up.railway.app/oneService?serviceTitle=" + serviceTitle)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setDescription(data.service[0].serviceDescription);
+    //   });
   }, []);
-  const handleBlur = (e) => {
+  const handleBlur = (e: any) => {
     const newOrder = { ...order };
-    newOrder[e.target.name] = e.target.value;
+    // newOrder[e.target.name] = e.target.value;
     setOrder(newOrder);
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e: any) => {
     const newFile = e.target.files[0];
     setFile(newFile);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     const formData = new FormData();
-    formData.append("file", file);
-    formData.append("name", order.name);
-    formData.append("email", email);
-    formData.append("serviceName", serviceTitle);
-    formData.append("projectDetails", description);
-    formData.append("price", order.price);
+    // formData.append("file", file);
+    // formData.append("name", order.name);
+    // formData.append("email", email);
+    // formData.append("serviceName", serviceTitle);
+    // formData.append("projectDetails", description);
+    // formData.append("price", order.price);
     formData.append("status", "Pending");
     console.log(formData);
 
@@ -72,10 +72,10 @@ const OrderForm = () => {
               ></input>
             </div>
             <div className="col-md-12">
-              <input type="email" value={email} name="email" className="w-100 pl-4"></input>
+              <input type="email" value={email ?? ""} name="email" className="w-100 pl-4"></input>
             </div>
             <div className="col-md-12">
-              <input type="text" value={serviceTitle} name="serviceName" className="w-100 pl-4"></input>
+              {/* <input type="text" value={serviceTitle} name="serviceName" className="w-100 pl-4"></input> */}
             </div>
             <div className="col-md-12">
               <textarea className="textArea w-100 pl-4" name="projectDetails" value={description}></textarea>
@@ -85,7 +85,7 @@ const OrderForm = () => {
             </div>
             <div className="col-md-6 upload-button-class">
               <input type="file" id="actual-btn" onChange={handleFileChange} hidden />
-              <label for="actual-btn" className="d-flex justify-content-center">
+              <label htmlFor="actual-btn" className="d-flex justify-content-center">
                 <img src={cloud} /> Upload image
               </label>
             </div>

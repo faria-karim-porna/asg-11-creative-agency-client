@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ServiceCard.css";
-const ServiceCard = ({ service }) => {
+const ServiceCard = ({ service }: any) => {
   const [serviceInfo, setServiceInfo] = useState([]);
   const serviceTitle = service.serviceName;
   useEffect(() => {
@@ -10,7 +10,7 @@ const ServiceCard = ({ service }) => {
         setServiceInfo(data.service[0]);
       });
   }, []);
-  const image = serviceInfo.image;
+  // const image = serviceInfo.image;
   let status = service.status;
   let colors, background, borders;
   if (status == "Pending") {
@@ -41,12 +41,12 @@ const ServiceCard = ({ service }) => {
     <div className="col-md-5 service-card">
       <div className="row">
         <div className="col-md-8">
-          {image && <img src={serviceInfo && `data:image/png;base64,${serviceInfo.image.img}`} className="img-fluid w-25" />}
+          {/* {image && <img src={serviceInfo && `data:image/png;base64,${serviceInfo.image.img}`} className="img-fluid w-25" />} */}
         </div>
         <div className="col-md-4">
-          <p style={statusStyle} className="status-style">
+          {/* <p style={statusStyle} className="status-style">
             {service.status}
-          </p>
+          </p> */}
         </div>
         <div className="col-md-12">
           <p className="title">{service.serviceName}</p>

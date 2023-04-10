@@ -6,7 +6,7 @@ const DataTableComponent = () => {
   useEffect(() => {
     fetch("https://asg-11-creative-agency-server-production.up.railway.app/allUsers")
       .then((res) => res.json())
-      .then((data) => setAllUserInfo(data));
+      .then((data) => setAllUserInfo(data.allUsers));
   }, []);
 
   return (
@@ -31,7 +31,7 @@ const DataTableComponent = () => {
         </tr>
       </thead>
       <tbody>
-        {allUserInfo.map((user) => (
+        {allUserInfo.map((user: any) => (
           <tr>
             <td>{user.name}</td>
             <td>{user.email}</td>

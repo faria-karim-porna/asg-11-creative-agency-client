@@ -4,11 +4,11 @@ import "./MakeAdmin.css";
 const MakeAdmin = () => {
   const name = localStorage.getItem("name");
   const [email, setEmail] = useState("");
-  const handleBlur = (e) => {
+  const handleBlur = (e: any) => {
     setEmail(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     const newAdmin = {
       email: email,
     };
