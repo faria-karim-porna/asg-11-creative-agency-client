@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-// import { UserContext } from "../../App";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { initializeLoginFramework, handleGoogleSignIn, handleSignOut } from "./loginManager";
 import gmailLogo from "../../images/logos/googleColor.png";
 import logo from "../../images/logos/logo.png";
 import "./Login.css";
-// import { UserContext } from "../ContextHook/UserContextProvider";
+import { LoginContext } from "../ContextHook/LoginContextProvider";
 
 type LocationState = {
   from: {
@@ -35,7 +34,7 @@ function Login() {
 
   initializeLoginFramework();
 
-  // const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const { loggedInUser, setLoggedInUser } = useContext(LoginContext);
   const history = useHistory();
   const location = useLocation();
   let { from } = location.state ? (location.state as LocationState) : { from: { pathname: "/" } };
@@ -54,7 +53,7 @@ function Login() {
 
   const handleResponse = (res: LoginInterface, redirect: boolean) => {
     setUser(res);
-    // setLoggedInUser(res);
+    setLoggedInUser(res);
     localStorage.setItem("name", res.name);
     localStorage.setItem("email", res.email);
     localStorage.setItem("photo", res.photo);

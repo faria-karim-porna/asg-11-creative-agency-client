@@ -12,16 +12,9 @@ import MainDashboard from "./Components/MainDashboard/MainDashboard";
 import Order from "./Components/Order/Order";
 import AdminDataList from "./Components/AdminDataList/AdminDataList";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import { LoginProvider } from "./Components/ContextHook/UserContextProvider";
+import { LoginProvider } from "./Components/ContextHook/LoginContextProvider";
 
 export function App(props: any): JSX.Element {
-  const [loggedInUser, setLoggedInUser] = useState({
-    isSignedIn: false,
-    name: "",
-    email: "",
-    password: "",
-    photo: "",
-  });
   return (
     <LoginProvider>
       <Router>

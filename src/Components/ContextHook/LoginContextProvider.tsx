@@ -1,5 +1,5 @@
 // import { createContext } from "react";
-// import { LoginInterface } from "../Login/Login";
+// import { LoginInterface } from '../Login/Login';
 
 // type TypeLoginContext = [LoginInterface, React.Dispatch<React.SetStateAction<LoginInterface>>];
 // export const UserContext = createContext<TypeLoginContext>([
@@ -52,11 +52,15 @@
 
 // import React, { useState } from "react";
 import React, { useState, createContext } from "react";
+import { LoginInterface } from "../Login/Login";
 interface LoginProviderProps {
   children: React.ReactNode;
 }
-export const LoginContext = createContext({ loggedIn: false, setLoggedIn: (loggedIn: boolean) => {} });
+export const LoginContext = createContext({
+  loggedInUser : { isSignedIn: false, name: "", email: "", password: "", photo: "" },
+  setLoggedInUser : (loggedInUser: LoginInterface) => {},
+});
 export const LoginProvider = ({ children }: LoginProviderProps) => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  return <LoginContext.Provider value={{ loggedIn, setLoggedIn }}>{children}</LoginContext.Provider>;
+  const [loggedInUser, setLoggedInUser] = useState({ isSignedIn: false, name: "", email: "", password: "", photo: "" });
+  return <LoginContext.Provider value={{loggedInUser, setLoggedInUser}}>{children}</LoginContext.Provider>;
 };
