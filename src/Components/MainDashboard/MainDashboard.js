@@ -9,7 +9,7 @@ const MainDashboard = () => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch('https://boiling-eyrie-70521.herokuapp.com/isAdmin', {
+        fetch('https://asg-11-creative-agency-server-production.up.railway.app/isAdmin', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ email: email })

@@ -20,12 +20,11 @@ const AddService = () => {
 
     const handleSubmit = (e) => {
         const formData = new FormData()
-        console.log(service);
         formData.append('file', file);
         formData.append('serviceTitle', service.serviceTitle);
         formData.append('serviceDescription', service.serviceDescription);
 
-        fetch('https://boiling-eyrie-70521.herokuapp.com/addService', {
+        fetch('https://asg-11-creative-agency-server-production.up.railway.app/addService', {
             method: 'POST',
             body: formData
         })
