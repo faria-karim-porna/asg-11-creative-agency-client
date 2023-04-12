@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ReviewSectionCard from "../ReviewSectionCard/ReviewSectionCard";
 import "./ReviewSection.css";
+import { ReviewType } from "../../core/types/reviewsType";
 const ReviewSection = () => {
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState<ReviewType[]>([]);
   useEffect(() => {
     fetch("https://asg-11-creative-agency-server-production.up.railway.app/reviews")
       .then((res) => res.json())
@@ -17,7 +18,12 @@ const ReviewSection = () => {
       </h1>
       <div className="row d-flex justify-content-around">
         {reviews.map((review) => (
-          <ReviewSectionCard review={review}></ReviewSectionCard>
+          <ReviewSectionCard
+            name={review.name}
+            designation={review.designation}
+            description={review.description}
+            image={review.image}
+          ></ReviewSectionCard>
         ))}
       </div>
     </div>
