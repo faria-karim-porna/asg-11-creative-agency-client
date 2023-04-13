@@ -6,12 +6,12 @@ const Order = () => {
   const name = localStorage.getItem("name");
   return (
     <body>
-      <SideNav></SideNav>
+      <SideNav />
       <p className="pageName">
         Order<span className="username">{name}</span>
       </p>
       <div className="mainArea">
-        <OrderForm></OrderForm>
+        <OrderForm />
       </div>
     </body>
   );

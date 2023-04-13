@@ -32,6 +32,9 @@ input{
     margin-bottom: 10px !important;
     border-radius: 4px;
 }
+input:disabled, textarea:disabled{
+    background-color: white;
+}
 ::placeholder{
     padding: 10px;
 }

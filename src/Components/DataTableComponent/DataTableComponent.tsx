@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Status from "../Status/Status";
 import "./DataTableComponent.css";
+import { UserType } from "../../core/types/usersType";
 const DataTableComponent = () => {
   const [allUserInfo, setAllUserInfo] = useState([]);
   useEffect(() => {
@@ -31,13 +32,26 @@ const DataTableComponent = () => {
         </tr>
       </thead>
       <tbody>
-        {allUserInfo.map((user: any) => (
+        {allUserInfo.map((user: UserType) => (
           <tr>
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>{user.serviceName}</td>
             <td>{user.projectDetails}</td>
-            <td>{<Status user={user}></Status>}</td>
+            <td>
+              {
+                <Status
+                  _id={user._id}
+                  name={user.name}
+                  email={user.email}
+                  serviceName={user.serviceName}
+                  image={user.image}
+                  projectDetails={user.projectDetails}
+                  price={user.price}
+                  status={user.status}
+                ></Status>
+              }
+            </td>
           </tr>
         ))}
       </tbody>

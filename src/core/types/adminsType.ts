@@ -1,4 +1,4 @@
-export type UserType = {
+export type AdminType = {
   _id?: string;
   email: string;
 };

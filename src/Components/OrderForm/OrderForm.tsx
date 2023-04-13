@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { FocusEvent, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import cloud from "../../images/icons/cloud-upload-outline 1.png";
 import "./OrderForm.css";
+type paramType = {
+  serviceTitle: string;
+};
 const OrderForm = () => {
-  // let { serviceTitle } = useParams();
-  // localStorage.setItem("link", serviceTitle);
-  // if (!serviceTitle) {
-  //   let serviceTitle = localStorage.getItem("link");
-  // }
+  const { serviceTitle } = useParams<paramType>();
+  localStorage.setItem("link", serviceTitle);
+
   const email = localStorage.getItem("email");
-  const [order, setOrder] = useState({});
+  const [order, setOrder] = useState({ name: "", price: "", status: "pending" });
   const [file, setFile] = useState(null);
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-    // fetch("https://asg-11-creative-agency-server-production.up.railway.app/oneService?serviceTitle=" + serviceTitle)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     setDescription(data.service[0].serviceDescription);
-    //   });
+    fetch(
+      "https://asg-11-creative-agency-server-production.up.railway.app/oneService?serviceTitle=" +
+        (serviceTitle ?? localStorage.getItem("link"))
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setDescription(data.service[0].serviceDescription);
+      });
   }, []);
-  const handleBlur = (e: any) => {
-    const newOrder = { ...order };
-    // newOrder[e.target.name] = e.target.value;
-    setOrder(newOrder);
+  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+    setOrder({ ...order, [e.target.name]: e.target.value });
   };
 
   const handleFileChange = (e: any) => {
@@ -33,17 +35,24 @@ const OrderForm = () => {
 
   const handleSubmit = (e: any) => {
     const formData = new FormData();
-    // formData.append("file", file);
-    // formData.append("name", order.name);
-    // formData.append("email", email);
-    // formData.append("serviceName", serviceTitle);
-    // formData.append("projectDetails", description);
-    // formData.append("price", order.price);
-    formData.append("status", "Pending");
+    if (file) {
+      formData.append("file", file);
+    }
+    if (email) {
+      formData.append("email", email);
+    }
+    formData.append("name", order.name);
+    formData.append("serviceName", serviceTitle);
+    formData.append("projectDetails", description);
+    formData.append("price", order.price);
+    formData.append("status", order.status);
     console.log(formData);
 
     fetch("https://asg-11-creative-agency-server-production.up.railway.app/addOrder", {
       method: "POST",
+      headers: {
+        "content-type": "multipart/form-data",
+      },
       body: formData,
     })
       .then((response) => response.json())
@@ -72,13 +81,13 @@ const OrderForm = () => {
               ></input>
             </div>
             <div className="col-md-12">
-              <input type="email" value={email ?? ""} name="email" className="w-100 pl-4"></input>
+              <input type="email" value={email ?? ""} name="email" className="w-100 pl-4" disabled></input>
             </div>
             <div className="col-md-12">
-              {/* <input type="text" value={serviceTitle} name="serviceName" className="w-100 pl-4"></input> */}
+              <input type="text" value={serviceTitle} name="serviceName" className="w-100 pl-4" disabled></input>
             </div>
             <div className="col-md-12">
-              <textarea className="textArea w-100 pl-4" name="projectDetails" value={description}></textarea>
+              <textarea className="textArea w-100 pl-4" name="projectDetails" value={description} disabled></textarea>
             </div>
             <div className="col-md-6">
               <input type="text" placeholder="Price" name="price" className="w-100 pl-4" onBlur={handleBlur} required></input>
