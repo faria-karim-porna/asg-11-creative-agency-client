@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { FocusEvent, useState } from "react";
 import SideNav from "../SideNav/SideNav";
 import "./MakeAdmin.css";
 const MakeAdmin = () => {
   const name = localStorage.getItem("name");
   const [email, setEmail] = useState("");
-  const handleBlur = (e: any) => {
+  const [message, setMessage] = useState("");
+  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
@@ -16,8 +17,11 @@ const MakeAdmin = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newAdmin),
-    }).then((res) => res.json());
-    e.preventdefault();
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setMessage(data.message);
+      });
   };
   return (
     <body>
@@ -27,24 +31,27 @@ const MakeAdmin = () => {
       </p>
       <div className="mainArea">
         <div className="makeAdim-form-design justify-content-center">
-          <form onSubmit={handleSubmit}>
-            <div className="row form-area makeAdmincard">
-              <div className="col-md-12">
-                <p className="form-label">Email</p>
-              </div>
-              <div className="col-md-6">
-                <input type="email" placeholder="jon@gamil.com" name="email" className="input-makeAdmin" onBlur={handleBlur}></input>
-              </div>
-              <div className="col-md-6">
-                <div className="email-submit-btn">
-                  {" "}
-                  <button className="btn btn-success" type="submit">
-                    Submit
-                  </button>
-                </div>
+          <div className="row form-area makeAdmincard">
+            <div className="col-md-12">
+              <p className="form-label">Email</p>
+            </div>
+            <div className="col-md-6">
+              <input type="email" placeholder="jon@gamil.com" name="email" className="input-makeAdmin" onBlur={handleBlur}></input>
+            </div>
+            <div className="col-md-6">
+              <div className="email-submit-btn">
+                {" "}
+                <button className="btn btn-success" onClick={handleSubmit}>
+                  Submit
+                </button>
               </div>
             </div>
-          </form>
+            {message ? (
+              <div className="d-flex justify-content-center">
+                <div className="text-success font-weight-bold">{message}</div>
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </body>
