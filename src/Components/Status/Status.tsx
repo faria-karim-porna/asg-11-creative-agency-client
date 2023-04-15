@@ -8,12 +8,16 @@ const Status = (props: UserType) => {
     const newStatus = e.target.value;
     setCurrStatus(newStatus);
     const id = _id;
-    const serviceStatus = { id, newStatus };
+    const serviceStatus = { id: id, status: newStatus };
     fetch(`https://asg-11-creative-agency-server-production.up.railway.app/updateStatus/${id}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(serviceStatus),
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   const setStyle = (cStatus: string) => {
