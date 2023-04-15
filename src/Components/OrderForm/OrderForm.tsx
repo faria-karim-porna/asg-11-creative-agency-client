@@ -13,6 +13,7 @@ const OrderForm = () => {
   const [order, setOrder] = useState({ name: "", price: "", status: "pending" });
   const [file, setFile] = useState(null);
   const [description, setDescription] = useState("");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     fetch(
@@ -24,6 +25,7 @@ const OrderForm = () => {
         setDescription(data.service[0].serviceDescription);
       });
   }, []);
+
   const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
     setOrder({ ...order, [e.target.name]: e.target.value });
   };
@@ -46,65 +48,64 @@ const OrderForm = () => {
     formData.append("projectDetails", description);
     formData.append("price", order.price);
     formData.append("status", order.status);
-    console.log(formData);
+    console.log(formData.get("name"));
 
     fetch("https://asg-11-creative-agency-server-production.up.railway.app/addOrder", {
       method: "POST",
-      headers: {
-        "content-type": "multipart/form-data",
-      },
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        setMessage(data.message);
       })
       .catch((error) => {
         console.error(error);
       });
-    e.preventdefault();
   };
 
   return (
     <div className="row">
       <div className="col-md-9">
-        <form onSubmit={handleSubmit}>
-          <div className="row form-class">
-            <div className="col-md-12">
-              <input
-                type="text"
-                placeholder="Your name / company's name"
-                name="name"
-                className="w-100 pl-4"
-                onBlur={handleBlur}
-                required
-              ></input>
-            </div>
-            <div className="col-md-12">
-              <input type="email" value={email ?? ""} name="email" className="w-100 pl-4" disabled></input>
-            </div>
-            <div className="col-md-12">
-              <input type="text" value={serviceTitle} name="serviceName" className="w-100 pl-4" disabled></input>
-            </div>
-            <div className="col-md-12">
-              <textarea className="textArea w-100 pl-4" name="projectDetails" value={description} disabled></textarea>
-            </div>
-            <div className="col-md-6">
-              <input type="text" placeholder="Price" name="price" className="w-100 pl-4" onBlur={handleBlur} required></input>
-            </div>
-            <div className="col-md-6 upload-button-class">
-              <input type="file" id="actual-btn" onChange={handleFileChange} hidden />
-              <label htmlFor="actual-btn" className="d-flex justify-content-center">
-                <img src={cloud} /> Upload image
-              </label>
-            </div>
-            <div className="col-md-4">
-              <button className="w-100 dark-button-class" type="submit">
-                Send
-              </button>
-            </div>
+        <div className="row form-class">
+          <div className="col-md-12">
+            <input
+              type="text"
+              placeholder="Your name / company's name"
+              name="name"
+              className="w-100 pl-4"
+              onBlur={handleBlur}
+              required
+            ></input>
           </div>
-        </form>
+          <div className="col-md-12">
+            <input type="email" value={email ?? ""} name="email" className="w-100 pl-4" disabled></input>
+          </div>
+          <div className="col-md-12">
+            <input type="text" value={serviceTitle} name="serviceName" className="w-100 pl-4" disabled></input>
+          </div>
+          <div className="col-md-12">
+            <textarea className="textArea w-100 pl-4" name="projectDetails" value={description} disabled></textarea>
+          </div>
+          <div className="col-md-6">
+            <input type="text" placeholder="Price" name="price" className="w-100 pl-4" onBlur={handleBlur} required></input>
+          </div>
+          <div className="col-md-6 upload-button-class">
+            <input type="file" id="actual-btn" onChange={handleFileChange} hidden />
+            <label htmlFor="actual-btn" className="d-flex justify-content-center">
+              <img src={cloud} /> Upload image
+            </label>
+          </div>
+          <div className="col-md-4">
+            <button className="w-100 dark-button-class" onClick={handleSubmit}>
+              Send
+            </button>
+          </div>
+        </div>
+        {message ? (
+          <div className="d-flex justify-content-center">
+            <div className="text-success font-weight-bold mt-2">{message}</div>
+          </div>
+        ) : null}
       </div>
     </div>
   );
