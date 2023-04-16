@@ -4,11 +4,15 @@ import "./index.css";
 import { App } from "./App";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle";
+import { Provider } from "react-redux";
+import { AppStore } from "./core/redux/reduxStore";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={AppStore}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById("root")
 );
 
