@@ -15,9 +15,12 @@ export const DashboardView = () => {
   const store = useAppSelector(
     (state) => ({
       view: state.UI.view,
+      isAdmin: state.UI.isAdmin,
+      hasResponse: state.UI.hasResponse,
     }),
     shallowEqual
   );
+  const DefaultView = store.isAdmin ? <AdminDataList /> : store.hasResponse ? <Order /> : null;
   return (
     <>
       <SideNav />
@@ -33,7 +36,9 @@ export const DashboardView = () => {
         <ServiceList />
       ) : store.view === EnumView.AddReview ? (
         <Review />
-      ) : null}
+      ) : (
+        DefaultView
+      )}
     </>
   );
 };

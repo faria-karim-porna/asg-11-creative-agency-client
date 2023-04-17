@@ -7,22 +7,28 @@ import serviceList from "../../images/icons/serviceList.png";
 import review from "../../images/icons/review.png";
 import plus from "../../images/icons/plus.png";
 import makeAdmin from "../../images/icons/makeAdmin.png";
-import { useAppDispatch } from "../../core/redux/reduxStore";
+import { useAppDispatch, useAppSelector } from "../../core/redux/reduxStore";
 import { UIAction } from "../../core/redux/slices/UISlice";
 import { EnumView } from "../../core/enums/EnumView";
+import { shallowEqual } from "react-redux";
 const SideNav = () => {
   let serviceTitle = localStorage.getItem("link");
+  const store = useAppSelector(
+    (state) => ({
+      isAdmin: state.UI.isAdmin,
+      hasResponse: state.UI.hasResponse,
+    }),
+    shallowEqual
+  );
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const email = localStorage.getItem("email");
   const dispatch = useAppDispatch();
   useEffect(() => {
-    fetch("https://asg-11-creative-agency-server-production.up.railway.app/isAdmin", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ email: email }),
-    })
-      .then((res) => res.json())
-      .then((data) => setIsAdmin(data));
+    if (localStorage.getItem("isAdmin")) {
+      dispatch(UIAction.setIsAdmin(localStorage.getItem("isAdmin") == "true" ? true : false));
+      dispatch(UIAction.setHasResponse(true));
+    }
   }, []);
   return (
     <div className="sidenav">
@@ -31,7 +37,7 @@ const SideNav = () => {
           <img src={logo} className="sideNav-logo" />
         </a>
       </Link>
-      {isAdmin ? (
+      {store.isAdmin ? (
         <div>
           <div onClick={() => dispatch(UIAction.setPageView(EnumView.ViewService))}>
             <div className="sideNav-tab">
@@ -52,7 +58,7 @@ const SideNav = () => {
             </div>
           </div>
         </div>
-      ) : (
+      ) : store.hasResponse ? (
         <div>
           <div onClick={() => dispatch(UIAction.setPageView(EnumView.AddOrder))}>
             <div className="sideNav-tab">
@@ -73,7 +79,7 @@ const SideNav = () => {
             </div>
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

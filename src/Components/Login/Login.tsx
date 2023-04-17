@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { initializeLoginFramework, handleGoogleSignIn, handleSignOut } from "./loginManager";
@@ -6,6 +6,8 @@ import gmailLogo from "../../images/logos/googleColor.png";
 import logo from "../../images/logos/logo.png";
 import "./Login.css";
 import { LoginContext } from "../ContextHook/LoginContextProvider";
+import { useAppDispatch } from "../../core/redux/reduxStore";
+import { UIAction } from "../../core/redux/slices/UISlice";
 
 type LocationState = {
   from: {
@@ -38,7 +40,7 @@ function Login() {
   const history = useHistory();
   const location = useLocation();
   let { from } = location.state ? (location.state as LocationState) : { from: { pathname: "/" } };
-
+  const dispatch = useAppDispatch();
   const googleSignIn = () => {
     handleGoogleSignIn().then((res) => {
       handleResponse(res, true);
@@ -57,6 +59,19 @@ function Login() {
     localStorage.setItem("name", res.name);
     localStorage.setItem("email", res.email);
     localStorage.setItem("photo", res.photo);
+
+    fetch("https://asg-11-creative-agency-server-production.up.railway.app/isAdmin", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ email: res.email }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(UIAction.setIsAdmin(data));
+        dispatch(UIAction.setHasResponse(true));
+        localStorage.setItem("isAdmin", data);
+        // setIsAdmin(data);
+      });
     if (redirect) {
       history.replace(from);
     }
