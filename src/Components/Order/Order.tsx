@@ -5,15 +5,14 @@ import "./Order.css";
 const Order = () => {
   const name = localStorage.getItem("name");
   return (
-    <body>
-      <SideNav />
+    <>
       <p className="pageName">
         Order<span className="username">{name}</span>
       </p>
       <div className="mainArea">
         <OrderForm />
       </div>
-    </body>
+    </>
   );
 };
 

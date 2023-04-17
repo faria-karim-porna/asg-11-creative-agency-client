@@ -5,8 +5,7 @@ import "./AdminDataList.css";
 const AdminDataList = () => {
   const name = localStorage.getItem("name");
   return (
-    <body>
-      <SideNav></SideNav>
+    <>
       <p className="tablepageName">
         Service List<span className="username">{name}</span>
       </p>
@@ -15,7 +14,7 @@ const AdminDataList = () => {
           <DataTableComponent></DataTableComponent>
         </div>
       </div>
-    </body>
+    </>
   );
 };
 

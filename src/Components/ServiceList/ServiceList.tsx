@@ -16,8 +16,7 @@ const ServiceList = () => {
       });
   }, []);
   return (
-    <body>
-      <SideNav></SideNav>
+    <>
       <p className="pageName">
         Service List <span className="username">{name}</span>
       </p>
@@ -36,7 +35,7 @@ const ServiceList = () => {
           ))}
         </div>
       </div>
-    </body>
+    </>
   );
 };
 

@@ -39,8 +39,7 @@ const AddService = () => {
       });
   };
   return (
-    <body>
-      <SideNav></SideNav>
+    <>
       <p className="pageName">
         Add Service <span className="username">{name}</span>
       </p>
@@ -82,7 +81,7 @@ const AddService = () => {
           Submit
         </button>
       </div>
-    </body>
+    </>
   );
 };
 

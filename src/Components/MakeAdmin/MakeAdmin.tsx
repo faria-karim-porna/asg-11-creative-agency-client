@@ -24,8 +24,7 @@ const MakeAdmin = () => {
       });
   };
   return (
-    <body>
-      <SideNav></SideNav>
+    <>
       <p className="pageName">
         Make Admin<span className="username">{name}</span>
       </p>
@@ -54,7 +53,7 @@ const MakeAdmin = () => {
           </div>
         </div>
       </div>
-    </body>
+    </>
   );
 };
 

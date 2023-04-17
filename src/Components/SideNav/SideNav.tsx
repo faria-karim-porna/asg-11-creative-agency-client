@@ -7,11 +7,14 @@ import serviceList from "../../images/icons/serviceList.png";
 import review from "../../images/icons/review.png";
 import plus from "../../images/icons/plus.png";
 import makeAdmin from "../../images/icons/makeAdmin.png";
+import { useAppDispatch } from "../../core/redux/reduxStore";
+import { UIAction } from "../../core/redux/slices/UISlice";
+import { EnumView } from "../../core/enums/EnumView";
 const SideNav = () => {
   let serviceTitle = localStorage.getItem("link");
   const [isAdmin, setIsAdmin] = useState(false);
   const email = localStorage.getItem("email");
-
+  const dispatch = useAppDispatch();
   useEffect(() => {
     fetch("https://asg-11-creative-agency-server-production.up.railway.app/isAdmin", {
       method: "POST",
@@ -30,45 +33,45 @@ const SideNav = () => {
       </Link>
       {isAdmin ? (
         <div>
-          <Link to="/admin/serviceList">
-            <a href="#order">
+          <div onClick={() => dispatch(UIAction.setPageView(EnumView.ViewService))}>
+            <div className="sideNav-tab">
               <img src={serviceList} className="sideNav-icons" />
               <span className="sideNav-text">Service list</span>
-            </a>
-          </Link>
-          <Link to="/admin/addService">
-            <a href="#serviceList">
+            </div>
+          </div>
+          <div onClick={() => dispatch(UIAction.setPageView(EnumView.AddService))}>
+            <div className="sideNav-tab">
               <img src={plus} className="sideNav-icons" />
               <span className="sideNav-text">Add Service</span>
-            </a>
-          </Link>
-          <Link to="/admin/makeAdmin">
-            <a href="#serviceList">
+            </div>
+          </div>
+          <div onClick={() => dispatch(UIAction.setPageView(EnumView.AddAdmin))}>
+            <div className="sideNav-tab">
               <img src={makeAdmin} className="sideNav-icons" />
               <span className="sideNav-text">Make Admin</span>
-            </a>
-          </Link>
+            </div>
+          </div>
         </div>
       ) : (
         <div>
-          <Link to={`/dashboard/${serviceTitle}`}>
-            <a href="#order">
+          <div onClick={() => dispatch(UIAction.setPageView(EnumView.AddOrder))}>
+            <div className="sideNav-tab">
               <img src={order} className="sideNav-icons" />
               <span className="sideNav-text">Order</span>
-            </a>
-          </Link>
-          <Link to="/customer/serviceList">
-            <a href="#serviceList">
+            </div>
+          </div>
+          <div onClick={() => dispatch(UIAction.setPageView(EnumView.PersonalService))}>
+            <div className="sideNav-tab">
               <img src={serviceList} className="sideNav-icons" />
               <span className="sideNav-text">Service List</span>
-            </a>
-          </Link>
-          <Link to="/customer/review">
-            <a href="#serviceList">
+            </div>
+          </div>
+          <div onClick={() => dispatch(UIAction.setPageView(EnumView.AddReview))}>
+            <div className="sideNav-tab">
               <img src={review} className="sideNav-icons" />
               <span className="sideNav-text">Review</span>
-            </a>
-          </Link>
+            </div>
+          </div>
         </div>
       )}
     </div>
