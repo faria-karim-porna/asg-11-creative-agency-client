@@ -13,7 +13,7 @@ const MakeAdmin = () => {
     const newAdmin = {
       email: email,
     };
-    fetch("https://asg-11-creative-agency-server-production.up.railway.app/addAdmin", {
+    fetch("https://asg-11-creative-agency-server.vercel.app/addAdmin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newAdmin),

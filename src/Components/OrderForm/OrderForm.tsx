@@ -17,7 +17,7 @@ const OrderForm = () => {
 
   useEffect(() => {
     fetch(
-      "https://asg-11-creative-agency-server-production.up.railway.app/oneService?serviceTitle=" +
+      "https://asg-11-creative-agency-server.vercel.app/oneService?serviceTitle=" +
         (serviceTitle ?? localStorage.getItem("link"))
     )
       .then((res) => res.json())
@@ -50,7 +50,7 @@ const OrderForm = () => {
     formData.append("status", order.status);
     console.log(formData.get("name"));
 
-    fetch("https://asg-11-creative-agency-server-production.up.railway.app/addOrder", {
+    fetch("https://asg-11-creative-agency-server.vercel.app/addOrder", {
       method: "POST",
       body: formData,
     })

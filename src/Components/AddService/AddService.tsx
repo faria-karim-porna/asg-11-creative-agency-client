@@ -26,7 +26,7 @@ const AddService = () => {
     formData.append("serviceTitle", service.serviceTitle);
     formData.append("serviceDescription", service.serviceDescription);
 
-    fetch("https://asg-11-creative-agency-server-production.up.railway.app/addService", {
+    fetch("https://asg-11-creative-agency-server.vercel.app/addService", {
       method: "POST",
       body: formData,
     })

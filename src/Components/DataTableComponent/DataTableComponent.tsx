@@ -5,7 +5,7 @@ import { UserType } from "../../core/types/usersType";
 const DataTableComponent = () => {
   const [allUserInfo, setAllUserInfo] = useState([]);
   useEffect(() => {
-    fetch("https://asg-11-creative-agency-server-production.up.railway.app/allUsers")
+    fetch("https://asg-11-creative-agency-server.vercel.app/allUsers")
       .then((res) => res.json())
       .then((data) => setAllUserInfo(data.allUsers));
   }, []);

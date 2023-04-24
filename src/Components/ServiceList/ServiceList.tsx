@@ -9,7 +9,7 @@ const ServiceList = () => {
   const [personalService, setPersonalService] = useState([]);
 
   useEffect(() => {
-    fetch("https://asg-11-creative-agency-server-production.up.railway.app/personalService?email=" + email)
+    fetch("https://asg-11-creative-agency-server.vercel.app/personalService?email=" + email)
       .then((res) => res.json())
       .then((data) => {
         setPersonalService(data.personal);

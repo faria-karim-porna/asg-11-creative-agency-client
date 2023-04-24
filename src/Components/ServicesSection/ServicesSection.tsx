@@ -5,7 +5,7 @@ import { ServiceType } from "../../core/types/servicesType";
 const ServicesSection = () => {
   const [services, setServices] = useState<ServiceType[]>([]);
   useEffect(() => {
-    fetch("https://asg-11-creative-agency-server-production.up.railway.app/services")
+    fetch("https://asg-11-creative-agency-server.vercel.app/services")
       .then((res) => res.json())
       .then((data) => {
         setServices(data.allServices);

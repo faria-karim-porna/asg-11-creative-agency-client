@@ -9,7 +9,7 @@ const Status = (props: UserType) => {
     setCurrStatus(newStatus);
     const id = _id;
     const serviceStatus = { id: id, status: newStatus };
-    fetch(`https://asg-11-creative-agency-server-production.up.railway.app/updateStatus/${id}`, {
+    fetch(`https://asg-11-creative-agency-server.vercel.app/updateStatus/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(serviceStatus),

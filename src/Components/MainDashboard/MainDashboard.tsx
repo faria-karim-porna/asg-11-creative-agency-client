@@ -9,7 +9,7 @@ const MainDashboard = () => {
   const history = useHistory();
 
   useEffect(() => {
-    fetch("https://asg-11-creative-agency-server-production.up.railway.app/isAdmin", {
+    fetch("https://asg-11-creative-agency-server.vercel.app/isAdmin", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ email: email }),

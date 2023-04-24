@@ -25,7 +25,7 @@ const ReviewForm = () => {
       designation: designation,
       description: description,
     };
-    fetch("https://asg-11-creative-agency-server-production.up.railway.app/addReview", {
+    fetch("https://asg-11-creative-agency-server.vercel.app/addReview", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newReview),

@@ -5,7 +5,7 @@ import { ReviewType } from "../../core/types/reviewsType";
 const ReviewSection = () => {
   const [reviews, setReviews] = useState<ReviewType[]>([]);
   useEffect(() => {
-    fetch("https://asg-11-creative-agency-server-production.up.railway.app/reviews")
+    fetch("https://asg-11-creative-agency-server.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data.allReviews);
