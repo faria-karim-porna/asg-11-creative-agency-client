@@ -10,7 +10,7 @@ const OrderForm = () => {
   localStorage.setItem("link", serviceTitle);
 
   const email = localStorage.getItem("email");
-  const [order, setOrder] = useState({ name: "", price: "", status: "pending" });
+  const [order, setOrder] = useState({ name: "", price: "", status: "Pending" });
   const [file, setFile] = useState(null);
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
